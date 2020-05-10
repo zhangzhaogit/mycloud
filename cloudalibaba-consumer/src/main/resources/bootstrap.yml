@@ -1,0 +1,37 @@
+server:
+  port: 83
+
+spring:
+  application:
+    name: nacos-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #Nacos服务注册中心地址
+      config:
+        server-addr: localhost:8848 #Nacos作为配置中心地址
+        file-extension: yml  #指定yaml格式的配置
+#        group: DEV_GROUP
+#        namespace: 632c1ad4-8b1c-4d4f-af8f-3b2faef3ff03
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource      #当前数据源操作类型
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://39.106.52.109:3307/springcloud?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
+    username: root
+    password: root
+  redis:
+    host: 39.106.52.109
+    port: 9080
+    timeout: 1000
+##########mybatis配置##########
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+#  type-aliases-package: com.zhao.springcloud.module.*.entity       #所有Entity别名类所在包
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+# ${spring.application.name}-${spring.profile.active}.${spring.cloud.nacos.config.file.extension}
+# nacos-config-client-dev.yml
