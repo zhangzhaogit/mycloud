@@ -3,13 +3,15 @@ package com.zhao.springcloud.config;/**
  * @Date 2020/5/3 22:11
  */
 
+import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
-import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+
+import java.io.Serializable;
 
 /**
  * @Description:
@@ -17,9 +19,24 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  * @Date: 2020-05-03 22:11 
  **/
 @Configuration
-public class RedisConfig {
+public class RedisConfig extends CachingConfigurerSupport {
 
+
+    /**
+     * RedisTemplate配置
+     * @return
+     */
     @Bean
+    public RedisTemplate<String, Serializable> redisTemplate(LettuceConnectionFactory lettuceConnectionFactory) {
+        RedisTemplate<String, Serializable> template = new RedisTemplate<>();
+        template.setKeySerializer(new StringRedisSerializer());
+        template.setValueSerializer(new GenericJackson2JsonRedisSerializer());
+        template.setConnectionFactory(lettuceConnectionFactory);
+        return template;
+    }
+
+
+    /*@Bean
     public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
         RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(redisConnectionFactory);
@@ -31,5 +48,5 @@ public class RedisConfig {
         redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
         return redisTemplate;
     }
-
+*/
 }
