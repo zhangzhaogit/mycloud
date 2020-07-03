@@ -1,0 +1,16 @@
+# RocketMQ配置
+rocketmq:
+  #nameserver集群地址
+  name-server: 192.168.1.169:9876
+  #生产者参数配置
+  producer:
+    group: my-group
+    sendMessageTimeout: 300000
+    compress-message-body-threshold: 4096
+    max-message-size: 4194304
+    retry-times-when-send-async-failed: 0
+    retry-next-server: true
+    retry-times-when-send-failed: 2
+  #消费者参数配置
+  consumer:
+    group: consumer-gruop
