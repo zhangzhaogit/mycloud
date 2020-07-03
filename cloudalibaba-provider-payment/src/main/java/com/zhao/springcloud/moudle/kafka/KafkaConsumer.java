@@ -19,7 +19,19 @@ public class KafkaConsumer {
     public void data(ConsumerRecord consumerRecord) {
         Object value = consumerRecord.value();
         if (log.isInfoEnabled()) {
-            log.info("offset {}, value {}", consumerRecord.offset(), consumerRecord.value());
+            log.info("消费者 1 offset {}, value {}", consumerRecord.offset(), consumerRecord.value());
+        }
+        if (null == value) {
+            log.error("kafka消费数据为空");
+        }
+        log.info((String) value);
+    }
+
+    @KafkaListener(topics = "${kafka.topic}", groupId = "xxx")
+    public void data1(ConsumerRecord consumerRecord) {
+        Object value = consumerRecord.value();
+        if (log.isInfoEnabled()) {
+            log.info("消费者 2 offset {}, value {}", consumerRecord.offset(), consumerRecord.value());
         }
         if (null == value) {
             log.error("kafka消费数据为空");
