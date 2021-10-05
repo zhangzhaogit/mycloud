@@ -49,6 +49,7 @@
                 <filtering>true</filtering>
                 <includes>
                     <include>**/*.properties</include>
+                    <include>**/*.yml</include>
                     <include>**/*.html</include>
                     <include>**/*.js</include>
                     <include>**/*.css</include>
