@@ -35,4 +35,9 @@ public class PaymentController {
         kafkaProducer.data(msg);
     }
 
+    @GetMapping("/error")
+    public void getError(String msg){
+        int i = 1 / 0;
+    }
+
 }

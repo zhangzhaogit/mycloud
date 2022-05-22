@@ -11,7 +11,6 @@ import com.zhao.springcloud.moudle.consumer.mapper.ConsumerMapper;
 import com.zhao.springcloud.moudle.consumer.service.ConsumerService;
 import common.CommonResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -30,8 +29,6 @@ public class ConsumerServiceImpl implements ConsumerService {
 
     @Autowired
     private ConsumerMapper consumerMapper;
-    @Autowired
-    private RedisTemplate redisTemplate;
 
     @Override
     @SentinelResource(value = "paymentInfoHandler",blockHandlerClass = CustomerBlockHandler.class,blockHandler = "handlerException")
