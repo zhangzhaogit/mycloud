@@ -4,10 +4,9 @@ import com.zhao.springcloud.moudle.kafka.KafkaProducer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  * @Description //TODO
@@ -38,6 +37,13 @@ public class PaymentController {
     @GetMapping("/error")
     public void getError(String msg){
         int i = 1 / 0;
+    }
+
+    @PostMapping("/post")
+    public void post(@RequestBody Map<String,Object> map){
+        Integer role = 0;
+        boolean role1 = role.equals(map.get("role"));
+        System.out.println(role1);
     }
 
 }

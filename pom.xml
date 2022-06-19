@@ -15,6 +15,7 @@
         <module>cloudalibaba-provider-payment</module>
         <module>cloudalibaba-consumer</module>
         <module>cloud-gateway</module>
+        <module>hadoop</module>
 
     </modules>
 
