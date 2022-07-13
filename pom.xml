@@ -16,6 +16,8 @@
         <module>cloudalibaba-consumer</module>
         <module>cloud-gateway</module>
         <module>hadoop</module>
+        <module>hbase</module>
+        <module>flume-interceptor</module>
 
     </modules>
 
