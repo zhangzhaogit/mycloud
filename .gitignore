@@ -1,14 +1,40 @@
+# Compiled class file
+*.class
+*.classpath
+*.factorypath
 
-.idea/$CACHE_FILE$
-.idea/compiler.xml
-.idea/encodings.xml
-.idea/misc.xml
-.idea/inspectionProfiles/Project_Default.xml
-.idea/uiDesigner.xml
-.idea/vcs.xml
-.idea/workspace.xml
-*.kotlin_module
-*.lst
-*.lst
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
 *.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+
+# IDE Files #
+*.iml
+.idea
+.idea/
+.project
+.settings
 target
+.DS_Store
+
+# temp ignore
+*.cache
+*.diff
+*.patch
+*.tmp
+
+# Maven ignore
+.flattened-pom.xml
