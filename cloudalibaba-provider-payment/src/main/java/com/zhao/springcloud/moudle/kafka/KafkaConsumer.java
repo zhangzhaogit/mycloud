@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Component;
 
 /**
@@ -37,5 +38,16 @@ public class KafkaConsumer {
             log.error("kafka消费数据为空");
         }
         log.info((String) value);
+    }
+
+    @KafkaListener(topics = {"${kafka.topic}"}, groupId = "xxx")
+    public void processMessage(ConsumerRecord<?, ?> record, Acknowledgment ack) {
+        try {
+            System.out.printf("topic is %s, offset is %d,partition is %s, value is %s \n", record.topic(), record.offset(),record.partition(), record.value());
+            // 手动提交offset
+            ack.acknowledge();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
