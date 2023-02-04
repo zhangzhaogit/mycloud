@@ -1,9 +1,0 @@
-com\zhao\springcloud\OrderNacosMain83.class
-com\zhao\springcloud\handler\CustomerBlockHandler.class
-com\zhao\springcloud\config\ApplicationContextConfig.class
-com\zhao\springcloud\moudle\consumer\service\impl\ConsumerServiceImpl.class
-com\zhao\springcloud\moudle\consumer\controller\OrderNacosController.class
-com\zhao\springcloud\moudle\consumer\service\ConsumerService.class
-com\zhao\springcloud\config\RedisConfig.class
-com\zhao\springcloud\feign\FeignService.class
-com\zhao\springcloud\moudle\consumer\mapper\ConsumerMapper.class
