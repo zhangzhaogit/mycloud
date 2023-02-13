@@ -19,6 +19,7 @@
         <module>hbase</module>
         <module>flume-interceptor</module>
         <module>flink</module>
+        <module>test</module>
 
     </modules>
 
