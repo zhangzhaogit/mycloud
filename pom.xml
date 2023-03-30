@@ -20,6 +20,7 @@
         <module>flume-interceptor</module>
         <module>flink</module>
         <module>test</module>
+        <module>oauth</module>
 
     </modules>
 
@@ -36,23 +37,26 @@
         <mariadb.version>2.3.0</mariadb.version>
         <mybatisplus.version>3.1.2</mybatisplus.version>
         <mybatisplus-generator.version>3.1.2</mybatisplus-generator.version>
+        <springboot.version>2.7.10</springboot.version>
+        <springcloud.version>2021.0.4</springcloud.version>
+        <springcloud-alibaba.version>2021.0.4.0</springcloud-alibaba.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-            <!--spring boot 2.2.2-->
+            <!--spring boot-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.2.2.RELEASE</version>
+                <version>${springboot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--spring cloud Hoxton.SR3-->
+            <!--spring cloud-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR1</version>
+                <version>${springcloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -60,7 +64,7 @@
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>2.1.0.RELEASE</version>
+                <version>${springcloud-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

@@ -1,8 +1,3 @@
-/**
- * @Author zhangzhao
- * @Date 2022/6/19 14:52
- */
-
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.Cell;
 import org.apache.hadoop.hbase.CellUtil;
@@ -12,6 +7,11 @@ import org.apache.hadoop.hbase.client.*;
 import org.apache.hadoop.hbase.util.Bytes;
 
 import java.io.IOException;
+
+/**
+ * @Author zhangzhao
+ * @Date 2022/6/19 14:52
+ */
 
 /**
  * @Description:

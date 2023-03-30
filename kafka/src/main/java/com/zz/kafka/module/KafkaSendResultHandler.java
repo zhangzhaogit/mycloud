@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
 import org.springframework.kafka.support.ProducerListener;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
 /**
@@ -20,8 +21,13 @@ public class KafkaSendResultHandler implements ProducerListener {
         log.info("回调 Message send success : " + producerRecord.toString());
     }
 
+//    @Override
+//    public void onError(ProducerRecord producerRecord, Exception exception) {
+//
+//    }
+
     @Override
-    public void onError(ProducerRecord producerRecord, Exception exception) {
+    public void onError(ProducerRecord producerRecord, @Nullable RecordMetadata recordMetadata, Exception exception) {
         log.info("回调 Message send error : " + producerRecord.toString());
     }
 }
