@@ -24,20 +24,31 @@ import reactor.core.publisher.Mono;
 //@Order(1) 和实现order接口一样
 @Slf4j
 public class MyLogGatewayFilter implements GlobalFilter, Ordered {
+
+    /**
+     * 这里为支持的请求头，如果有自定义的header字段请自己添加
+     */
+    private static final String ALLOWED_HEADERS = "X-Requested-With, Content-Type, Authorization, credential, X-XSRF-TOKEN, token, username, client, knfie4j-gateway-request, request-origion";
+    private static final String ALLOWED_METHODS = "GET,POST,PUT,DELETE,OPTIONS,HEAD";
+    private static final String ALLOWED_ORIGIN = "*";
+    private static final String ALLOWED_EXPOSE = "*";
     private static final String MAX_AGE = "18000L";
 
+    /**
+     * 跨域配置
+     */
     @Override
     public Mono<Void> filter(ServerWebExchange ctx, GatewayFilterChain chain) {
         ServerHttpRequest request = ctx.getRequest();
         if (CorsUtils.isCorsRequest(request)) {
             ServerHttpResponse response = ctx.getResponse();
             HttpHeaders headers = response.getHeaders();
-            headers.set(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
+            headers.set(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, ALLOWED_ORIGIN);
             headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_HEADERS, "*");
-            headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS, "POST, GET, OPTIONS, DELETE");
+            headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS, ALLOWED_METHODS);
             headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_CREDENTIALS, "true");
-            headers.add(HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS, "*");
-            headers.add(HttpHeaders.ACCESS_CONTROL_MAX_AGE, "3600");
+            headers.add(HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS, ALLOWED_EXPOSE);
+            headers.add(HttpHeaders.ACCESS_CONTROL_MAX_AGE, MAX_AGE);
             if (request.getMethod() == HttpMethod.OPTIONS) {
                 response.setStatusCode(HttpStatus.OK);
                 return Mono.empty();

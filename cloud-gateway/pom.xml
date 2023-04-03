@@ -17,6 +17,11 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
+        <!--负载loadbalancer-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+        </dependency>
         <!--springcloud alibaba nacos-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
@@ -25,6 +30,12 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.zz</groupId>
+            <artifactId>zz-starter-jwt</artifactId>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
     <build>
@@ -44,30 +55,30 @@
         </plugins>
         <resources>
             <!--配置打包时字体文件不被maven拷贝，导致字体文件破坏-->
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-                <includes>
-                    <include>**/*.properties</include>
-                    <include>**/*.yml</include>
-                    <include>**/*.html</include>
-                    <include>**/*.js</include>
-                    <include>**/*.css</include>
-                    <include>**/*.xml</include>
-                </includes>
-                <excludes>
-                    <exclude>**/*.ttf</exclude>
-                    <exclude>**/*.woff</exclude>
-                </excludes>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>false</filtering>
-                <includes>
-                    <include>**/*.ttf</include>
-                    <include>**/*.woff</include>
-                </includes>
-            </resource>
+<!--            <resource>-->
+<!--                <directory>src/main/resources</directory>-->
+<!--                <filtering>true</filtering>-->
+<!--                <includes>-->
+<!--                    <include>**/*.properties</include>-->
+<!--                    <include>**/*.yml</include>-->
+<!--                    <include>**/*.html</include>-->
+<!--                    <include>**/*.js</include>-->
+<!--                    <include>**/*.css</include>-->
+<!--                    <include>**/*.xml</include>-->
+<!--                </includes>-->
+<!--                <excludes>-->
+<!--                    <exclude>**/*.ttf</exclude>-->
+<!--                    <exclude>**/*.woff</exclude>-->
+<!--                </excludes>-->
+<!--            </resource>-->
+<!--            <resource>-->
+<!--                <directory>src/main/resources</directory>-->
+<!--                <filtering>false</filtering>-->
+<!--                <includes>-->
+<!--                    <include>**/*.ttf</include>-->
+<!--                    <include>**/*.woff</include>-->
+<!--                </includes>-->
+<!--            </resource>-->
         </resources>
     </build>
 </project>
